@@ -1,0 +1,38 @@
+{
+    "xsVckFc7F6Gnw14AGkxQThaeGwxCetAy": {
+        "ticket_id": "abaeb992d6",
+        "ticket_data": {
+            "job_title": "Full Stack Engineer",
+            "location": "Bangalore, India",
+            "experience_required": "4\u20137 years",
+            "salary_range": "INR 18\u201328 Lakhs per annum",
+            "job_description": "Design and develop scalable web applications, collaborate with cross-functional teams, and contribute to both frontend and backend development efforts.",
+            "required_skills": "JavaScript, React.js, Node.js, HTML/CSS, REST APIs, SQL/NoSQL databases, Cloud Platforms (AWS/GCP/Azure)",
+            "employment_type": "Full-time",
+            "deadline": "March 15, 2025"
+        },
+        "hr_email": "khanfardeen833@gmail.com",
+        "created_at": "2025-06-14T07:08:48.330090",
+        "status": "approved",
+        "approved_at": "2025-06-14T07:12:50.410944",
+        "rejected_at": null
+    },
+    "x32YEIxDOGzB9QXsOUcjG1GFmMZdLdTg": {
+        "ticket_id": "264c06bd8b",
+        "ticket_data": {
+            "job_title": "Full Stack Engineer",
+            "location": "Bangalore, India",
+            "experience_required": "4\u20137 years",
+            "salary_range": "INR 18\u201328 Lakhs per annum",
+            "job_description": "Design and develop scalable web applications, collaborate with cross-functional teams, and contribute to both frontend and backend development efforts.",
+            "required_skills": "JavaScript, React.js, Node.js, HTML/CSS, REST APIs, SQL/NoSQL databases, Cloud Platforms (AWS/GCP/Azure)",
+            "employment_type": "Full-time",
+            "deadline": "March 15, 2025"
+        },
+        "hr_email": "khanfardeen833@gmail.com",
+        "created_at": "2025-06-14T09:41:19.173696",
+        "status": "approved",
+        "approved_at": "2025-06-14T09:44:46.902328",
+        "rejected_at": null
+    }
+}

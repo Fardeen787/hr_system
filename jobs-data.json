@@ -1,0 +1,160 @@
+{
+    "e206b5ae66": {
+        "ticket_id": "e206b5ae66",
+        "sender": "khanfardeen833@gmail.com",
+        "subject": "Re: Data Engineer",
+        "created_at": "2025-06-11T07:29:38.988521",
+        "last_updated": "2025-06-11T07:36:05.057584",
+        "status": "posted",
+        "initial_details": {
+            "job_title": "Senior Data Engineer",
+            "location": "Bangalore, India",
+            "experience_required": "5-8 years",
+            "salary_range": "INR 25-35 Lakhs per annum",
+            "job_description": "Lead data science initiatives, build ML models, and mentor junior team members",
+            "required_skills": "Python, Machine Learning, Deep Learning, SQL, Cloud Platforms (AWS/GCP)",
+            "employment_type": "Full-time",
+            "deadline": "March 15, 2025"
+        },
+        "updates": [
+            {
+                "timestamp": "2025-06-11T07:36:05.057584",
+                "details": {
+                    "salary_range": "INR 18-28 Lakhs per annum",
+                    "experience_required": "5-10 years",
+                    "required_skills": "GraphQL, Redis, MongoDB",
+                    "deadline": "February 28, 2025"
+                }
+            }
+        ],
+        "approval_status": "approved",
+        "approved": true,
+        "approval_token": "V73ePzGvFeU61M0zj0WfDvYtYNUn44Y4",
+        "approved_at": "2025-06-11T07:40:38.115119"
+    },
+    "962c3ccc64": {
+        "ticket_id": "962c3ccc64",
+        "sender": "khanfardeen833@gmail.com",
+        "subject": "Re: Update",
+        "created_at": "2025-06-03T20:41:46.426615",
+        "last_updated": "2025-06-03T20:41:46.426615",
+        "status": "post",
+        "initial_details": {
+            "job_title": "Data Scientist",
+            "salary_range": "INR 18-28 Lakhs per annum",
+            "experience_required": "5-10 years",
+            "required_skills": "GraphQL, Redis, MongoDB",
+            "deadline": "February 28, 2025"
+        },
+        "updates": [],
+        "approval_status": "approved",
+        "approved": true,
+        "approved_at": "2025-06-03T20:45:00.000000"
+    },
+    "a5ad0e60be": {
+        "ticket_id": "a5ad0e60be",
+        "sender": "khanfardeen833@gmail.com",
+        "subject": "Re: Update Ticket ID: ddaae6bf4d",
+        "created_at": "2025-06-03T21:45:32.378102",
+        "last_updated": "2025-06-03T21:45:32.378102",
+        "status": "post",
+        "initial_details": {
+            "job_title": "Backend Developer",
+            "location": "Mumbai, India",
+            "salary_range": "INR 18-28 Lakhs per annum",
+            "experience_required": "5-10 years",
+            "required_skills": "GraphQL, Redis, MongoDB",
+            "deadline": "February 28, 2025"
+        },
+        "updates": [],
+        "approval_status": "pending",
+        "approved": false
+    },
+    "f7b8c9d0e1": {
+        "ticket_id": "f7b8c9d0e1",
+        "sender": "hr@company.com",
+        "subject": "Frontend Developer Position",
+        "created_at": "2025-06-04T10:30:00.000000",
+        "last_updated": "2025-06-04T10:30:00.000000",
+        "status": "post",
+        "initial_details": {
+            "job_title": "Frontend Developer",
+            "location": "Mumbai, India",
+            "experience_required": "3-5 years",
+            "salary_range": "INR 12-18 Lakhs per annum",
+            "job_description": "Build responsive web applications using React and modern frontend technologies",
+            "required_skills": "React, JavaScript, TypeScript, CSS, HTML",
+            "employment_type": "Full-time",
+            "deadline": "March 30, 2025"
+        },
+        "updates": [],
+        "approval_status": "approved",
+        "approved": true,
+        "approved_at": "2025-06-04T10:35:00.000000"
+    },
+    "e2a06ae66": {
+        "ticket_id": "e206b5ae66",
+        "sender": "khanfardeen833@gmail.com",
+        "subject": "Re: Devops Engineer",
+        "created_at": "2025-06-11T07:29:38.988521",
+        "last_updated": "2025-06-11T07:36:05.057584",
+        "status": "posted",
+        "initial_details": {
+            "job_title": "Senior Devops Developer",
+            "location": "Indore, India",
+            "experience_required": "6-8 years",
+            "salary_range": "INR 20-35 Lakhs per annum",
+            "job_description": "Lead data science initiatives, build ML models, and mentor junior team members",
+            "required_skills": "Python, Machine Learning, Deep Learning, SQL, Cloud Platforms (AWS/GCP)",
+            "employment_type": "Full-time",
+            "deadline": "March 15, 2025"
+        },
+        "updates": [
+            {
+                "timestamp": "2025-06-11T07:36:05.057584",
+                "details": {
+                    "salary_range": "INR 18-28 Lakhs per annum",
+                    "experience_required": "5-10 years",
+                    "required_skills": "GraphQL, Redis, MongoDB",
+                    "deadline": "February 28, 2025"
+                }
+            },
+            {
+                "timestamp": "2025-06-11T07:36:05.057584",
+                "details": {
+                    "salary_range": "INR 18-28 Lakhs per annum",
+                    "experience_required": "6-10 years",
+                    "required_skills": "SQL, AWS, MongoDB",
+                    "deadline": "February 28, 2025"
+                }
+            }
+        ],
+        "approval_status": "approved",
+        "approved": true,
+        "approval_token": "V73ePzGvFeU61M0zj0WfDvYtYNUn44Y4",
+        "approved_at": "2025-06-11T07:40:38.115119"
+    },
+    "264c06bd8b": {
+        "ticket_id": "264c06bd8b",
+        "sender": "khanfardeen833@gmail.com",
+        "subject": "Re: Hiring Full stack",
+        "created_at": "2025-06-14T09:41:15.594373",
+        "last_updated": "2025-06-14T09:41:15.594373",
+        "status": "posted",
+        "initial_details": {
+            "job_title": "Full Stack Engineer",
+            "location": "Bangalore, India",
+            "experience_required": "4\u20137 years",
+            "salary_range": "INR 18\u201328 Lakhs per annum",
+            "job_description": "Design and develop scalable web applications, collaborate with cross-functional teams, and contribute to both frontend and backend development efforts.",
+            "required_skills": "JavaScript, React.js, Node.js, HTML/CSS, REST APIs, SQL/NoSQL databases, Cloud Platforms (AWS/GCP/Azure)",
+            "employment_type": "Full-time",
+            "deadline": "March 15, 2025"
+        },
+        "updates": [],
+        "approval_status": "approved",
+        "approved": true,
+        "approval_token": "x32YEIxDOGzB9QXsOUcjG1GFmMZdLdTg",
+        "approved_at": "2025-06-14T09:44:46.908269"
+    }
+}

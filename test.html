@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Bot - Resume Upload Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .config-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .config-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #48bb78;
+        }
+
+        .btn-secondary:hover {
+            background: #38a169;
+        }
+
+        .btn-danger {
+            background: #f56565;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .job-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .job-card h3 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .job-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .job-info-item {
+            font-size: 14px;
+        }
+
+        .job-info-item strong {
+            color: #666;
+        }
+
+        .upload-section {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px dashed #667eea;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background: #5a67d8;
+        }
+
+        .resume-list {
+            margin-top: 20px;
+        }
+
+        .resume-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .resume-info {
+            flex: 1;
+        }
+
+        .resume-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .resume-meta {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .selected {
+            background: #e8f0ff;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Hiring Bot - Resume Upload Test</h1>
+            <p>Test resume upload functionality and manage job applications</p>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="config-section">
+            <h2>⚙️ API Configuration</h2>
+            <div class="input-group">
+                <label for="apiUrl">API URL:</label>
+                <input type="text" id="apiUrl" placeholder="http://localhost:5000" value="http://localhost:5000">
+            </div>
+            <div class="input-group">
+                <label for="apiKey">API Key:</label>
+                <input type="password" id="apiKey" placeholder="Enter your API key" value="sk-hiring-bot-2024-secret-key-xyz789">
+            </div>
+            <button class="btn" onclick="testConnection()">Test Connection</button>
+        </div>
+
+        <div class="stats-grid" id="statsGrid" style="display: none;">
+            <div class="stat-card">
+                <div class="stat-number" id="totalJobs">0</div>
+                <div class="stat-label">Total Jobs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalResumes">0</div>
+                <div class="stat-label">Total Resumes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="jobsWithFolders">0</div>
+                <div class="stat-label">Jobs with Folders</div>
+            </div>
+        </div>
+
+        <div class="section" id="maintenanceSection" style="display: none;">
+            <h2>🔧 Maintenance</h2>
+            <p>Create folders for all existing approved tickets in the database.</p>
+            <button class="btn btn-secondary" onclick="createFoldersForExisting()">
+                Create Folders for Existing Tickets
+            </button>
+            <div id="maintenanceResult" style="margin-top: 15px;"></div>
+        </div>
+
+        <div class="section" id="jobsSection" style="display: none;">
+            <h2>📋 Approved Jobs</h2>
+            <div id="jobsList"></div>
+        </div>
+
+        <div class="section" id="uploadSection" style="display: none;">
+            <h2>📤 Upload Resume</h2>
+            <div id="selectedJob" style="margin-bottom: 20px;"></div>
+            <div class="upload-section">
+                <div class="input-group">
+                    <label for="applicantName">Applicant Name:</label>
+                    <input type="text" id="applicantName" placeholder="John Doe">
+                </div>
+                <div class="input-group">
+                    <label for="applicantEmail">Applicant Email:</label>
+                    <input type="email" id="applicantEmail" placeholder="john@example.com">
+                </div>
+                <div class="input-group">
+                    <div class="file-input-wrapper">
+                        <label for="resumeFile" class="file-input-label">Choose Resume File</label>
+                        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt,.rtf" onchange="handleFileSelect(event)">
+                    </div>
+                    <span id="selectedFileName" style="margin-left: 10px;"></span>
+                </div>
+                <button class="btn" onclick="uploadResume()" id="uploadBtn" disabled>Upload Resume</button>
+            </div>
+        </div>
+
+        <div class="section" id="resumesSection" style="display: none;">
+            <h2>📂 Uploaded Resumes</h2>
+            <div id="resumesList"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedTicketId = null;
+        let selectedFile = null;
+
+        function showMessage(message, type = 'info') {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = message;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 5000);
+        }
+
+        async function testConnection() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            if (!apiUrl || !apiKey) {
+                showMessage('Please enter both API URL and API Key', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${apiUrl}/api/health`);
+                const data = await response.json();
+
+                if (data.status === 'ok') {
+                    showMessage('✅ Connection successful!', 'success');
+                    document.getElementById('statsGrid').style.display = 'grid';
+                    document.getElementById('maintenanceSection').style.display = 'block';
+                    document.getElementById('jobsSection').style.display = 'block';
+                    loadJobs();
+                } else {
+                    showMessage('Connection failed: ' + (data.error || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                showMessage('Connection failed: ' + error.message, 'error');
+            }
+        }
+
+        async function createFoldersForExisting() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch(`${apiUrl}/api/maintenance/create-folders`, {
+                    method: 'POST',
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const resultHtml = `
+                        <div class="message success">
+                            <strong>✅ Folders created successfully!</strong><br>
+                            Total Approved: ${data.data.total_approved}<br>
+                            Folders Created: ${data.data.folders_created}<br>
+                            Existing Folders: ${data.data.folders_existing}<br>
+                            Failed: ${data.data.folders_failed}
+                        </div>
+                    `;
+                    document.getElementById('maintenanceResult').innerHTML = resultHtml;
+                    loadJobs(); // Reload jobs to show updated folder status
+                } else {
+                    showMessage('Failed to create folders: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error creating folders: ' + error.message, 'error');
+            }
+        }
+
+        async function loadJobs() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch(`${apiUrl}/api/jobs/approved?per_page=50`, {
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayJobs(data.data.jobs);
+                    updateStats(data.data.jobs);
+                } else {
+                    showMessage('Failed to load jobs: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error loading jobs: ' + error.message, 'error');
+            }
+        }
+
+        function updateStats(jobs) {
+            document.getElementById('totalJobs').textContent = jobs.length;
+            document.getElementById('totalResumes').textContent = jobs.reduce((sum, job) => sum + job.resume_count, 0);
+            document.getElementById('jobsWithFolders').textContent = jobs.filter(job => job.has_folder).length;
+        }
+
+        function displayJobs(jobs) {
+            const jobsList = document.getElementById('jobsList');
+            
+            if (jobs.length === 0) {
+                jobsList.innerHTML = '<p>No approved jobs found.</p>';
+                return;
+            }
+
+            let html = '';
+            jobs.forEach(job => {
+                html += `
+                    <div class="job-card ${selectedTicketId === job.ticket_id ? 'selected' : ''}" onclick="selectJob('${job.ticket_id}')">
+                        <h3>${job.job_title || job.subject}</h3>
+                        <div class="job-info">
+                            <div class="job-info-item"><strong>Ticket ID:</strong> ${job.ticket_id}</div>
+                            <div class="job-info-item"><strong>Location:</strong> ${job.location}</div>
+                            <div class="job-info-item"><strong>Type:</strong> ${job.employment_type}</div>
+                            <div class="job-info-item"><strong>Experience:</strong> ${job.experience_required}</div>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <span class="badge ${job.has_folder ? 'badge-success' : 'badge-info'}">
+                                ${job.has_folder ? '✓ Folder Created' : 'No Folder'}
+                            </span>
+                            <span class="badge badge-info">
+                                ${job.resume_count} Resumes
+                            </span>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button class="btn btn-secondary" onclick="event.stopPropagation(); selectJob('${job.ticket_id}')">
+                                Upload Resume
+                            </button>
+                            ${!job.has_folder ? `
+                                <button class="btn" onclick="event.stopPropagation(); approveAndCreateFolder('${job.ticket_id}')">
+                                    Create Folder
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            jobsList.innerHTML = html;
+        }
+
+        async function approveAndCreateFolder(ticketId) {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch(`${apiUrl}/api/tickets/${ticketId}/approve`, {
+                    method: 'POST',
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(`✅ Folder created for ticket ${ticketId}`, 'success');
+                    loadJobs(); // Reload to show updated status
+                } else {
+                    showMessage('Failed to create folder: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error creating folder: ' + error.message, 'error');
+            }
+        }
+
+        async function selectJob(ticketId) {
+            selectedTicketId = ticketId;
+            
+            // Update UI to show selection
+            document.querySelectorAll('.job-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            
+            // Show upload section
+            document.getElementById('uploadSection').style.display = 'block';
+            document.getElementById('resumesSection').style.display = 'block';
+            
+            // Update selected job info
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+            
+            try {
+                const response = await fetch(`${apiUrl}/api/jobs/${ticketId}`, {
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const job = data.data;
+                    document.getElementById('selectedJob').innerHTML = `
+                        <div class="job-card">
+                            <h3>Selected Job: ${job.current_details.job_title || job.ticket.subject}</h3>
+                            <p><strong>Ticket ID:</strong> ${ticketId}</p>
+                            <p><strong>Location:</strong> ${job.current_details.location}</p>
+                            <p><strong>Resume Count:</strong> ${job.resume_count || 0}</p>
+                        </div>
+                    `;
+                    
+                    // Load resumes for this job
+                    loadResumes(ticketId);
+                }
+            } catch (error) {
+                showMessage('Error loading job details: ' + error.message, 'error');
+            }
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                selectedFile = file;
+                document.getElementById('selectedFileName').textContent = file.name;
+                document.getElementById('uploadBtn').disabled = false;
+            }
+        }
+
+        async function uploadResume() {
+            if (!selectedTicketId || !selectedFile) {
+                showMessage('Please select a job and file', 'error');
+                return;
+            }
+
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+            const applicantName = document.getElementById('applicantName').value;
+            const applicantEmail = document.getElementById('applicantEmail').value;
+
+            const formData = new FormData();
+            formData.append('resume', selectedFile);
+            formData.append('applicant_name', applicantName);
+            formData.append('applicant_email', applicantEmail);
+
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = 'Uploading... <span class="loading"></span>';
+
+            try {
+                const response = await fetch(`${apiUrl}/api/tickets/${selectedTicketId}/resumes`, {
+                    method: 'POST',
+                    headers: {
+                        'X-API-Key': apiKey
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('✅ Resume uploaded successfully!', 'success');
+                    
+                    // Clear form
+                    document.getElementById('applicantName').value = '';
+                    document.getElementById('applicantEmail').value = '';
+                    document.getElementById('resumeFile').value = '';
+                    document.getElementById('selectedFileName').textContent = '';
+                    selectedFile = null;
+                    
+                    // Reload resumes and jobs
+                    loadResumes(selectedTicketId);
+                    loadJobs();
+                } else {
+                    showMessage('Upload failed: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showMessage('Upload error: ' + error.message, 'error');
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = 'Upload Resume';
+            }
+        }
+
+        async function loadResumes(ticketId) {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch(`${apiUrl}/api/tickets/${ticketId}/resumes`, {
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    displayResumes(data.data.resumes, ticketId);
+                }
+            } catch (error) {
+                console.error('Error loading resumes:', error);
+            }
+        }
+
+        function displayResumes(resumes, ticketId) {
+            const resumesList = document.getElementById('resumesList');
+            
+            if (resumes.length === 0) {
+                resumesList.innerHTML = '<p>No resumes uploaded yet.</p>';
+                return;
+            }
+
+            let html = '<div class="resume-list">';
+            resumes.forEach(resume => {
+                html += `
+                    <div class="resume-item">
+                        <div class="resume-info">
+                            <div class="resume-name">${resume.filename}</div>
+                            <div class="resume-meta">
+                                ${resume.applicant_name ? `<strong>Applicant:</strong> ${resume.applicant_name} ` : ''}
+                                ${resume.applicant_email ? `(${resume.applicant_email})` : ''}
+                                <br>
+                                <strong>Uploaded:</strong> ${new Date(resume.uploaded_at).toLocaleString()}
+                                <br>
+                                <strong>Size:</strong> ${formatFileSize(resume.file_size)}
+                            </div>
+                        </div>
+                        <button class="btn" onclick="downloadResume('${ticketId}', '${resume.filename}')">
+                            Download
+                        </button>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            resumesList.innerHTML = html;
+        }
+
+        async function downloadResume(ticketId, filename) {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            try {
+                const response = await fetch(`${apiUrl}/api/tickets/${ticketId}/resumes/${filename}`, {
+                    headers: {
+                        'X-API-Key': apiKey
+                    }
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    showMessage('✅ Resume downloaded successfully!', 'success');
+                } else {
+                    showMessage('Download failed', 'error');
+                }
+            } catch (error) {
+                showMessage('Download error: ' + error.message, 'error');
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Auto-test connection on load if values are pre-filled
+        window.onload = function() {
+            if (document.getElementById('apiUrl').value && document.getElementById('apiKey').value) {
+                testConnection();
+            }
+        };
+    </script>
+</body>
+</html>
